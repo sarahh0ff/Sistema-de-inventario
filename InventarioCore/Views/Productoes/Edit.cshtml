@@ -1,0 +1,60 @@
+﻿@model InventaCore.Models.Producto
+
+@{
+    ViewData["Title"] = "Editar producto";
+}
+
+<div class="app-shell">
+    <div class="glass-card" style="max-width: 700px; margin: 0 auto;">
+
+        <h1 class="soft-title">Editar producto</h1>
+        <p class="soft-subtitle">Modifica la información del producto seleccionado</p>
+
+        <form asp-action="Edit" method="post" class="form-grid">
+
+            <!-- ID oculto -->
+            <input type="hidden" asp-for="Id" />
+
+            <div>
+                <label asp-for="Nombre" class="soft-label"></label>
+                <input asp-for="Nombre" class="soft-input" placeholder="Nombre del producto" />
+                <span asp-validation-for="Nombre" class="validation-soft"></span>
+            </div>
+
+            <div>
+                <label asp-for="Categoria" class="soft-label"></label>
+                <input asp-for="Categoria" class="soft-input" placeholder="Categoría" />
+                <span asp-validation-for="Categoria" class="validation-soft"></span>
+            </div>
+
+            <div>
+                <label asp-for="Precio" class="soft-label"></label>
+                <input asp-for="Precio" class="soft-input" placeholder="Precio" />
+                <span asp-validation-for="Precio" class="validation-soft"></span>
+            </div>
+
+            <div>
+                <label asp-for="Cantidad" class="soft-label"></label>
+                <input asp-for="Cantidad" class="soft-input" placeholder="Cantidad" />
+                <span asp-validation-for="Cantidad" class="validation-soft"></span>
+            </div>
+
+            <div class="action-group mt-3">
+                <button type="submit" class="soft-btn soft-btn-primary">
+                    Guardar cambios
+                </button>
+
+                <a asp-action="Index" class="soft-btn soft-btn-secondary">
+                    Volver
+                </a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

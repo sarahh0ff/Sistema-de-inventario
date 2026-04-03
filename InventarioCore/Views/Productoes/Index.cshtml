@@ -1,0 +1,51 @@
+﻿@model IEnumerable<InventaCore.Models.Producto>
+
+@{
+    ViewData["Title"] = "Productos";
+}
+
+<div class="app-shell">
+    <div class="glass-card">
+        <div class="topbar">
+            <div>
+                <div class="brand-mark">InventaCore</div>
+                <h1 class="soft-title mb-0">Productos</h1>
+            </div>
+
+            <div class="nav-soft">
+                <a asp-controller="Productos" asp-action="Create">Nuevo producto</a>
+                <a asp-controller="Account" asp-action="Logout">Cerrar sesión</a>
+            </div>
+        </div>
+
+        <table class="table-soft">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Categoría</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Nombre</td>
+                        <td>@item.Categoria</td>
+                        <td>@item.Precio</td>
+                        <td>@item.Cantidad</td>
+                        <td>
+                            <div class="action-group">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="soft-btn soft-btn-secondary">Editar</a>
+                                <a asp-action="Details" asp-route-id="@item.Id" class="soft-btn soft-btn-secondary">Detalles</a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="soft-btn soft-btn-danger">Eliminar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

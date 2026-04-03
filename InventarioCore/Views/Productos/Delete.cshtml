@@ -1,0 +1,42 @@
+﻿@model InventaCore.Models.Producto
+
+@{
+    ViewData["Title"] = "Eliminar producto";
+}
+
+<div class="app-shell">
+    <div class="glass-card" style="max-width: 700px; margin: 0 auto;">
+        <h1 class="soft-title" id="deleteTitle">Eliminar producto</h1>
+        <p class="soft-subtitle">Confirma si deseas eliminar este producto del inventario</p>
+
+        <div class="form-grid">
+            <div>
+                <label class="soft-label">Nombre</label>
+                <div class="soft-input" id="deleteProductName">@Model.Nombre</div>
+            </div>
+
+            <div>
+                <label class="soft-label">Categoría</label>
+                <div class="soft-input" id="deleteProductCategory">@Model.Categoria</div>
+            </div>
+
+            <div>
+                <label class="soft-label">Precio</label>
+                <div class="soft-input" id="deleteProductPrice">@Model.Precio</div>
+            </div>
+
+            <div>
+                <label class="soft-label">Cantidad</label>
+                <div class="soft-input" id="deleteProductQuantity">@Model.Cantidad</div>
+            </div>
+        </div>
+
+        <form asp-action="Delete" method="post" class="mt-4" id="deleteProductForm">
+            <input type="hidden" asp-for="Id" id="productId" />
+            <div class="action-group">
+                <button type="submit" class="soft-btn soft-btn-danger" id="confirmDeleteButton">Eliminar</button>
+                <a asp-action="Index" class="soft-btn soft-btn-secondary" id="cancelDeleteButton">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>

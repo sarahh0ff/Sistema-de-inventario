@@ -1,0 +1,45 @@
+﻿@model InventaCore.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="page-center">
+    <div class="login-box">
+        <div class="soft-panel">
+            <h1 class="soft-title text-center">InventaCore</h1>
+            <p class="soft-subtitle text-center">Control de inventario elegante y moderno</p>
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert-soft">
+                    @ViewBag.Error
+                </div>
+            }
+
+            <form asp-action="Login" method="post" class="form-grid">
+                <div>
+                    <label asp-for="Username" class="soft-label">Usuario</label>
+                    <input asp-for="Username" class="soft-input" id="username" placeholder="Ingresa tu usuario" />
+                    <span asp-validation-for="Username" class="validation-soft"></span>
+                </div>
+
+                <div>
+                    <label asp-for="Password" class="soft-label">Contraseña</label>
+                    <input asp-for="Password" type="password" class="soft-input" id="password" placeholder="Ingresa tu contraseña" />
+                    <span asp-validation-for="Password" class="validation-soft"></span>
+                </div>
+
+                <button type="submit" class="soft-btn soft-btn-primary w-100" id="loginButton">
+                    Entrar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
