@@ -28,7 +28,7 @@ namespace TestInventario.Helpers
             extent.AttachReporter(htmlReporter);
             extent.AddSystemInfo("Aplicación", "InventarioCore");
             extent.AddSystemInfo("Ambiente", "Testing");
-            extent.AddSystemInfo("Tester", "Helen Smiling Figuereo Morillo");
+            extent.AddSystemInfo("Tester", "Sarah Heischly Figuereo Morillo");
         }
 
         public static void CreateTest(string testName, string description)

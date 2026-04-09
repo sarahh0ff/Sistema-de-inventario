@@ -66,14 +66,15 @@ namespace TestInventario.Pages
 
         public string GetErrorMessage()
         {
-            try
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+
+            var errorElement = wait.Until(d =>
             {
-                return wait.Until(d => d.FindElement(loginErrorMessage)).Text;
-            }
-            catch
-            {
-                return string.Empty;
-            }
+                var elements = d.FindElements(By.CssSelector(".text-danger, .alert-danger, .validation-summary-errors"));
+                return elements.FirstOrDefault(e => !string.IsNullOrWhiteSpace(e.Text));
+            });
+
+            return errorElement.Text.Trim();
         }
 
         public bool IsOnLoginPage()
